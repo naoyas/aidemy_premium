@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Aidemy Podcast Player</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding: 20px;">
+  <h3>🎧 AIキャリアを考える #01</h3>
+  <audio id="audio" controls style="width: 100%; max-width: 400px;">
+    <source src="https://shift-ai.co.jp/wp-content/uploads/2025/05/71bcab37dbc490cae4f8051639ecfe66.wav" type="audio/mpeg">
+    このブラウザでは audio がサポートされていません。
+  </audio>
+
+  <div id="cta" style="margin-top: 20px; display: none;">
+    <a href="https://aidemy.net/premium?from=podcast" target="_blank" style="background: #007BFF; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Aidemy Premiumを詳しく見る</a>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const cta = document.getElementById('cta');
+
+    function showCTA() {
+      cta.style.display = 'block';
+    }
+
+    audio.addEventListener('ended', showCTA); // 再生が終わったら
+    audio.addEventListener('pause', () => {
+      if (audio.currentTime > 0 && !audio.ended) {
+        showCTA(); // 一時停止でも表示
+      }
+    });
+  </script>
+</body>
+</html>
